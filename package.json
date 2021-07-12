@@ -1,5 +1,5 @@
 {
-  "name": "App-Covid19",
+  "name": "appcovid19",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.0.2",
+    "electron-db": "^0.15.7",
+    "mysql": "^2.18.1"
+  }
 }

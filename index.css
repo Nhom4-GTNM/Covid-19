@@ -1,1 +1,36 @@
 /*you can write css in here*/
+body{
+    background: url(./assets/background.jfif) no-repeat;
+    background-size: cover;
+}
+/* .container{
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+} */
+
+.box{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.content{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width:40%;
+}
+
+.card{
+    width: 40%;
+    margin-top: 5%;
+    margin-bottom:5%;
+}
+
+.card > .card-body > img {
+    width:100%;
+}

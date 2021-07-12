@@ -1,14 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App Covid 19</title>
-    <link rel="stylesheet" href="./index.css" />
-    <script src="./index.js"></script>
-  </head>
-  <body>
-    <h1>Welcome to app, Covid 19</h1>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+  <title>App Covid 19</title>
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row mt-2 ">
+      <h3 class="col-12 text-primary text-center">VUI LÒNG ĐĂNG NHẬP</h3>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-10 offset-1 ">
+        <form action="" class="col-12 mt-3 bg-light pt-5 pb-5" method="POST"  id="login">
+          <span class="form-group col-sm-8 text-center" id="sttlogin"></span>
+          <div class="form-group col-sm-8 offset-2">
+            <label for="" class="text-primary">Số điện thoại</label>
+            <input type="number" class="form-control mb-1" placeholder="Nhập số điện thoại" id="phone">
+            <span id="checkphone"></span>
+          </div>
+          <div class="form-group col-sm-8 offset-2">
+            <label for="" class="text-primary">Mật khẩu</label>
+            <input type="password" class="form-control mb-1" placeholder="Nhập mật khẩu" id="pwd">
+            <span id="checkpwd"></span>
+          </div>
+
+          <div class="form-group col-sm-8 offset-2 row">
+            <label for="" class="col-sm-5 text-primary mb-1 col-form-label pr-0">Mã xác nhận </label>
+            <input type="text" class="form-control col-sm-4 mb-1" placeholder="1234" id="code">
+          </div>
+          <button class="btn btn-primary offset-5" id="btnLogin">Đăng nhập</button>
+        </form>
+      </div>
+    </div>
+        
+        <!-- register -->
+        <!-- <div class="collapse" id="register" data-parent="#accordion">
+          <form action="" class="border-danger">
+            <div class="form-group row">
+              <label for="name" class="col-sm-4 col-form-label mb-1">Họ và tên</label>
+              <input type="text" class="form-control col-sm-8 mb-1" placeholder="Nhập họ và tên" id="name">
+            </div>
+            <div class="form-group row">
+              <label for="birth" class="col-sm-4 mb-1 col-form-label">Năm sinh</label>
+              <input type="number" class="form-control col-sm-8 mb-1" placeholder="Nhập năm sinh" id="birth">
+            </div>
+            <div class="form-group row">
+              <label for="address" class="col-sm-4 mb-1 col-form-label">Địa chỉ</label>
+              <input type="text" class="form-control col-sm-8 mb-1" placeholder="Nhập địa chỉ" id="address">
+            </div>
+            <div class="form-group row">
+              <label for="phone" class="col-sm-4 mb-1 col-form-label">Số điện thoại</label>
+              <input type="number" class="form-control col-sm-8 mb-1" placeholder="Nhập số điện thoại" id="phone">
+            </div>
+            <div class="form-group row">
+              <label for="pwd" class="col-sm-4 mb-1 col-form-label">Mật khẩu</label>
+              <input type="password" class="form-control col-sm-8 mb-1" placeholder="Nhập mật khẩu" id="pwd">
+            </div>
+            <div class="form-group row">
+              <label for="pwd2" class="col-sm-4 mb-1 col-form-label">Nhập lại mật khẩu</label>
+              <input type="password" class="form-control col-sm-8 mb-1" placeholder="Nhập lại mật khẩu" id="pwd2">
+            </div>
+            <div class="form-group row">
+              <label for="heal" class="col-sm-4 mb-1 col-form-label">TT sức khỏe</label>
+              <textarea type="text" class="form-control mb-1 col-sm-8" row="2" placeholder="Nhập tình trạng sức khỏe hiện tại" id="heal"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary offset-7">Đăng ký</button>
+          </form>
+
+        </div> -->
+  </div>
+</body>
 </html>
