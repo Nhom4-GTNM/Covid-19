@@ -41,7 +41,7 @@
         class="form-control"
         type="text"
         ng-model="sdt"
-        placeholder="Number phone..."
+        placeholder="Số điện thoại..."
         maxlength="10"
       />
       <label id="label" for="exampleDataList" class="form-label"
@@ -52,7 +52,7 @@
         class="form-control"
         type="password"
         ng-model="pass"
-        placeholder="Password..."
+        placeholder="Mật khẩu..."
       />
 
       <div class="row" id="btn_box">
@@ -114,8 +114,6 @@
         };
       });
       app.controller("alert", function ($scope, $mdDialog) {
-        Number($scope.sdt);
-        $scope.pass = "";
         $scope.status = "  ";
         $scope.customFullscreen = false;
         console.log($scope.sdt, $scope.pass);
