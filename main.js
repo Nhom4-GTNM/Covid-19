@@ -59,7 +59,6 @@ function validateLogin(obj) {
   users.forEach( (user) => {
     
     if(obj.phone == user.phone && obj.pwd == user.pwd) {
-      console.log(obj)
       Window()
       win.show()
       winlogin.close()
