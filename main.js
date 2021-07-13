@@ -1,6 +1,5 @@
 const { app, BrowserWindow, ipcMain, Notification} = require("electron");
 const path = require('path');
-let data = require('./db')
 let users = require('./db')
 let win;
 let winlogin;
