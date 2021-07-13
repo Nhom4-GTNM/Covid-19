@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, Notification} = require("electron");
 const path = require('path');
-let db = require('./db')
+let data = require('./db')
+let users = require('./db')
 let win;
 let winlogin;
 function Window() {
@@ -55,21 +56,26 @@ ipcMain.on('account', (event, obj) => {
 
 function validateLogin(obj) {
   // const sql = "SELECT * FROM users WHERE phone=? AND pwd=?"
-  if(obj.phone == '0123' && obj.pwd == 'pass'){
-    console.log(obj)
-    Window()
-    win.show()
-    winlogin.close()
-    new Notification({
-      title:"Login",
-      body: 'Đăng nhập thành công'
-    }).show()
-  }else{
-    new Notification({
-      title:"Login",
-      body: 'Số điện thoại hoặc mật khẩu không đúng !'
-    }).show()
+  users.forEach( (user) => {
+    
+    if(obj.phone == user.phone && obj.pwd == user.pwd) {
+      console.log(obj)
+      Window()
+      win.show()
+      winlogin.close()
+      new Notification({
+        title:"Login",
+        body: 'Đăng nhập thành công'
+      }).show()
+    }else{
+      new Notification({
+        title:"Login",
+        body: 'Số điện thoại hoặc mật khẩu không đúng !'
+      }).show()
+  
   }
+})
+
  
   //  db.query(sql, [phone, pwd], (error, results, fields) => {
   //    if(error){ console.log(error);}
@@ -86,4 +92,4 @@ function validateLogin(obj) {
   //     }
      
   //  });
- }
+}

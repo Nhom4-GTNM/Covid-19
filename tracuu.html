@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Covid 19</title>
+  <link rel="stylesheet" href="./index.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="./tracuu.js"></script>
+</head>
+
+<body >
+    <div class="container-fluid" ng-app='myApp' ng-controller='listCtrl'>
+      <div class="row">
+        <div class="col-2">
+          <a href="home.html" class=" btn bg-white"><img src="./assets/home.png" width="25px" alt=""></a>
+        </div>
+        <div class="col-8 offset-1 ml-5">
+          <input class="form-control" id="myInput" type="text" placeholder="Search.." ng-model="seachText">
+        </div>
+      </div>
+      
+      <!-- filter -->
+      <div class="row">
+        <div class="col-6 offset-3 bg-white">
+          <div class="row">
+            <div class="col-2">
+              <input type="radio" value="nam" name="gender">
+              <label for="" class="">Nam</label>
+              <br>
+              <input type="radio" value="nu" name="gender">
+              <label for="">Nữ</label>
+            </div>
+  
+            <div class="col-2">
+              <label for="" class="text-center">Năm sinh</label>
+              <input class="input-group" type="number">
+            </div>
+
+            <div>
+              <label>Tên Vaccine</label>
+              <select name="select" id="select" ng-model="selectVaccine">
+                <option value="Vaccine Việt Nam">Vaccine Việt Nam</option>
+                <option value="{{data}}" ng-repeat="data in tenVaccine()">{{data}}</option> <!-- interpolation -->
+                <!-- <option value="option-2">Option 2</option> -->
+              </select>
+            </div>
+            <div>
+              <label>Tình trạng</label>
+              <select name="select" id="select" ng-model="selectTt">
+                <option value="Âm tính"></option>
+                <option value="{{data}}" ng-repeat="data in ketqua()">{{data}}</option> <!-- interpolation -->
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- list -->
+      <div class="row mt-5 ">
+        <div class="col-10 offset-1" ng-repeat="data in list | filter:{data.hoten: seachText, data.tinhtrang: selectTt}">
+          <h4>{{data.hoten}}</h4>
+          <p>{{data.ngaysinh}}, Địa chỉ: {{data.diachi}}</p>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
