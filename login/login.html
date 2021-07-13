@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="Angular Material: Installing with NPM" />
+
+    <link
+      rel="stylesheet"
+      href="https://rawgit.com/angular/bower-material/master/angular-material.min.css"
+    />
+    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./login.js"></script>
+  </head>
+  <body ng-app="MyApp">
+    <div id="box">
+      <label id="label" for="exampleDataList" class="form-label"
+        >Số điện thoại</label
+      >
+      <input
+        id="phone"
+        class="form-control"
+        type="text"
+        ng-model="sdt"
+        placeholder="Number phone..."
+        maxlength="10"
+      />
+      <label id="label" for="exampleDataList" class="form-label"
+        >Mật khẩu</label
+      >
+      <input
+        id="pass"
+        class="form-control"
+        type="password"
+        ng-model="pass"
+        placeholder="Password..."
+      />
+
+      <div class="row" id="btn_box">
+        <div class="col-4">
+          <label
+            for="exampleDataList"
+            class="form-label"
+            style="font-size: 16px"
+            >Mã xác nhận</label
+          >
+        </div>
+        <div class="col-8" ng-controller="random" style="text-align: center">
+          <div class="row">
+            <div class="col-6">
+              <input
+                id="maxacnhan"
+                class="form-control"
+                type="text"
+                ng-model="new"
+                maxlength="4"
+              />
+            </div>
+            <div class="col-6">
+              <input
+                type="submit"
+                class="form-control"
+                ng-click="number()"
+                value="Mới"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="btn_box">
+        <div class="col-12">
+          <md-button
+            id="btn"
+            ng-controller="alert"
+            class="md-primary md-raised"
+            ng-click="showAlert($event)"
+          >
+            Đăng nhập
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-aria.js"></script>
+    <script src="https://rawgit.com/angular/bower-material/master/angular-material.js"></script>
+
+    <script>
+      app = angular.module("MyApp", ["ngMaterial"]);
+      app.controller("random", function ($scope) {
+        $scope.new = Math.floor(Math.random() * 10000);
+        $scope.number = function () {
+          $scope.new = Math.floor(Math.random() * 10000);
+        };
+      });
+      app.controller("alert", function ($scope, $mdDialog) {
+        Number($scope.sdt);
+        $scope.pass = "";
+        $scope.status = "  ";
+        $scope.customFullscreen = false;
+        console.log($scope.sdt, $scope.pass);
+
+        $scope.showAlert = function (ev) {
+          $scope.title = "Error network";
+          $scope.mess = "Error";
+          if ($scope.sdt == undefined) {
+            $scope.title = "Undefined";
+            $scope.mess = "The number phone undefined";
+          } else if ($scope.pass == undefined) {
+            $scope.title = "Undefined";
+            $scope.mess = "The password undefined";
+          } else {
+            $scope.title = "Number phone and Password";
+            $scope.mess = "Wrong Number hone or Password";
+          }
+
+          $mdDialog.show(
+            $mdDialog
+              .alert()
+              .parent(
+                angular.element(document.querySelector("#popupContainer"))
+              )
+              .clickOutsideToClose(true)
+              .title($scope.title)
+              .textContent($scope.mess)
+              .ariaLabel("Alert Dialog Demo")
+              .ok("Ok")
+              .targetEvent(ev)
+          );
+        };
+      });
+    </script>
+  </body>
+</html>

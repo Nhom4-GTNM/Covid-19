@@ -1,3 +1,4 @@
 # Covid-19
 
-#Vinh word template home
+#Vinh work template home
+#Luan work dialog, profile

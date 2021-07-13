@@ -1,95 +1,78 @@
-const { app, BrowserWindow, ipcMain, Notification} = require("electron");
-const path = require('path');
-let data = require('./db')
-let users = require('./db')
+const { app, BrowserWindow, ipcMain, webContents } = require("electron");
+const path = require("path");
+let users = require("./db");
+
 let win;
 let winlogin;
 function Window() {
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    height: 715,
+    width: 1200,
+    minWidth: 600,
+    minHeight: 200,
+    center: true,
     webPreferences: {
-     nodeIntegration: true,
-     contextIsolation:true,
-     devTools:false,
-      preload:path.join(__dirname, 'home.js')
-      
-    }
+      nodeIntegration: true,
+      contextIsolation: true,
+      devTools: true,
+      preload: path.join(__dirname, "home.js"),
+    },
   });
 
   win.loadFile("home.html");
 }
+//open devtools
 
-function loginWindow () {
+function loginWindow() {
   winlogin = new BrowserWindow({
-   width: 800,
-   height: 600,
-   webPreferences: {
-    nodeIntegration: true,
-    contextIsolation:true,
-    devTools:false,
-     preload:path.join(__dirname, 'index.js')
-     
-   }
- })
+    height: 715,
+    width: 1200,
+    minWidth: 600,
+    minHeight: 200,
+    center: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: true,
+      devTools: false,
+      //preload: path.join(__dirname, "index.js"),
+      preload: path.join(__dirname, "/login/login.js"),
+    },
+  });
 
- winlogin.loadFile('index.html')
+  winlogin.loadFile("./login/login.html");
 }
+//open devtool for login screen
 
-
-app.whenReady().then(loginWindow)
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
+app.whenReady().then(loginWindow);
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
   }
-})
+});
 
-app.on('activate', () => {
+app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    Window()
+    Window();
   }
-})
+});
 
-ipcMain.on('account', (event, obj) => {
-  validateLogin(obj)
-})
+ipcMain.on("account", (event, obj) => {
+  validateLogin(obj);
+});
+ipcMain.on("msg", (event, data) => {
+  console.log(data);
+});
 
 function validateLogin(obj) {
   // const sql = "SELECT * FROM users WHERE phone=? AND pwd=?"
-  users.forEach( (user) => {
-    
-    if(obj.phone == user.phone && obj.pwd == user.pwd) {
-      console.log(obj)
-      Window()
-      win.show()
-      winlogin.close()
-      new Notification({
-        title:"Login",
-        body: 'Đăng nhập thành công'
-      }).show()
-    }else{
-      new Notification({
-        title:"Login",
-        body: 'Số điện thoại hoặc mật khẩu không đúng !'
-      }).show()
-  
-  }
-})
-
- 
-  //  db.query(sql, [phone, pwd], (error, results, fields) => {
-  //    if(error){ console.log(error);}
- 
-  //    if(results){
-  //       Window ()
-  //       win.show()
-  //       winlogin.close()
-  //     }else{
-  //       new Notification({
-  //         title:"account",
-  //         body: 'email or password incorrect'
-  //       }).show()
-  //     }
-     
-  //  });
+  users.forEach((user) => {
+    if (obj.phone == user.phone && obj.pwd == user.pwd) {
+      user.active = true;
+      Window();
+      win.show();
+      winlogin.close();
+    } else {
+      console.log("login false");
+    }
+  });
 }

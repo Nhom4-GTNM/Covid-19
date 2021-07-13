@@ -10,8 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.8.2",
+    "angular-material": "^1.2.2",
     "bootstrap": "^5.0.2",
     "electron-db": "^0.15.7",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "electron": "^13.1.6"
   }
 }

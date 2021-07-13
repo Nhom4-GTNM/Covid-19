@@ -19,56 +19,70 @@
 <body >
     <div class="container-fluid" ng-app='myApp' ng-controller='listCtrl'>
       <div class="row">
-        <div class="col-2">
-          <a href="home.html" class=" btn bg-white"><img src="./assets/home.png" width="25px" alt=""></a>
+        <div class="col-2 mt-3 mb-3">
+          <a href="home.html" class="btn bg-white"><img src="./assets/home.png" width="20px" alt=""></a>
         </div>
-        <div class="col-8 offset-1 ml-5">
-          <input class="form-control" id="myInput" type="text" placeholder="Search.." ng-model="seachText">
+        <div class="col-8 mt-3 mb-3">
+          <input class="form-control" id="myInput" type="text" placeholder="Search.." ng-model="searchText">
         </div>
       </div>
       
-      <!-- filter -->
+      <!-- filter and results -->
       <div class="row">
-        <div class="col-6 offset-3 bg-white">
-          <div class="row">
-            <div class="col-2">
-              <input type="radio" value="nam" name="gender">
-              <label for="" class="">Nam</label>
-              <br>
-              <input type="radio" value="nu" name="gender">
-              <label for="">Nữ</label>
-            </div>
+        <table class="table table-borderless table-light col-10 offset-1 text-center">
+          <thead>
+            <tr>
+              <th class="col-3">
+                Giới tính <br>
+                <label for="" class=""><input type="radio" value="Nam" ng-model="gender">Nam</label>
+                <label for=""><input type="radio" value="Nữ" ng-model="gender">Nữ</label>
+              </th>
+
+              <th class="col-3">
+                <label for="">
+                  Ngày sinh <br>
+                </label><input class="form-control col-10 offset-1" type="text" ng-model="ngaysinh">              
+              </th>
+
+              <th>
+                Tên Vaccine <br>
+                <select name="select" id="select" ng-model="selectVaccine" class="form-control">
+                  <option value="">Chọn 1</option>
+                  <option value="{{data}}" ng-repeat="data in tenVaccine()">{{data}}</option> <!-- interpolation -->
+                  <!-- <option value="option-2">Option 2</option> -->
+                </select>
   
-            <div class="col-2">
-              <label for="" class="text-center">Năm sinh</label>
-              <input class="input-group" type="number">
-            </div>
-
-            <div>
-              <label>Tên Vaccine</label>
-              <select name="select" id="select" ng-model="selectVaccine">
-                <option value="Vaccine Việt Nam">Vaccine Việt Nam</option>
-                <option value="{{data}}" ng-repeat="data in tenVaccine()">{{data}}</option> <!-- interpolation -->
-                <!-- <option value="option-2">Option 2</option> -->
-              </select>
-            </div>
-            <div>
-              <label>Tình trạng</label>
-              <select name="select" id="select" ng-model="selectTt">
-                <option value="Âm tính"></option>
-                <option value="{{data}}" ng-repeat="data in ketqua()">{{data}}</option> <!-- interpolation -->
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- list -->
-      <div class="row mt-5 ">
-        <div class="col-10 offset-1" ng-repeat="data in list | filter:{data.hoten: seachText, data.tinhtrang: selectTt}">
-          <h4>{{data.hoten}}</h4>
-          <p>{{data.ngaysinh}}, Địa chỉ: {{data.diachi}}</p>
-        </div>
+              </th>
+              <th class="col-3">
+                Tình trạng <br>
+                <select name="select" id="select" ng-model="selectTt" class="form-control">
+                  <option value="">Chọn 1</option>
+                  <option value="{{data}}" ng-repeat="data in ketqua()">{{data}}</option> <!-- interpolation -->
+                </select>  
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="4"><hr><h2 class="text-primary">Thông tin</h2>
+              </td>
+            </tr>
+            <tr class="" ng-repeat="data in list 
+            | filter:{hoten: searchText, tinhtrang: selectTt, ngaysinh: ngaysinh, gioitinh: gender, tenVaccine: selectVaccine } track by $index">
+              <td colspan="2">
+                <h4>{{data.hoten }}</h4>
+                <p>Ngày sinh: {{data.ngaysinh}}, Địa chỉ: {{data.diachi}}</p>
+      
+              </td>
+              <td>
+                {{data.ngaysinh}}
+              </td>
+              <td>
+                {{data.tinhtrang}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 </body>
