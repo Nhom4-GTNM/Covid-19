@@ -64,15 +64,19 @@ ipcMain.on("msg", (event, data) => {
 });
 
 function validateLogin(obj) {
-  // const sql = "SELECT * FROM users WHERE phone=? AND pwd=?"
-  users.forEach((user) => {
+  stt = false;
+  for (user of users) {
     if (obj.phone == user.phone && obj.pwd == user.pwd) {
-      user.active = true;
+      stt = true;
       Window();
       win.show();
       winlogin.close();
+      break;
     } else {
-      console.log("login false");
+      stt = false;
     }
-  });
+  }
+  if (stt == false) {
+    console.log("login false");
+  }
 }
