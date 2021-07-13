@@ -55,10 +55,10 @@ ipcMain.on('account', (event, obj) => {
 })
 
 function validateLogin(obj) {
-  // const sql = "SELECT * FROM users WHERE phone=? AND pwd=?"
-  users.forEach( (user) => {
-    
+  stt = false
+  for(user of users){
     if(obj.phone == user.phone && obj.pwd == user.pwd) {
+      stt = true
       Window()
       win.show()
       winlogin.close()
@@ -66,29 +66,16 @@ function validateLogin(obj) {
         title:"Login",
         body: 'Đăng nhập thành công'
       }).show()
+      break;
     }else{
-      new Notification({
-        title:"Login",
-        body: 'Số điện thoại hoặc mật khẩu không đúng !'
-      }).show()
-  
+      stt = false
   }
-})
-
- 
-  //  db.query(sql, [phone, pwd], (error, results, fields) => {
-  //    if(error){ console.log(error);}
- 
-  //    if(results){
-  //       Window ()
-  //       win.show()
-  //       winlogin.close()
-  //     }else{
-  //       new Notification({
-  //         title:"account",
-  //         body: 'email or password incorrect'
-  //       }).show()
-  //     }
-     
-  //  });
+  }
+  if(stt == false){
+    new Notification({
+      title:"Login",
+      body: 'Số điện thoại hoặc mật khẩu không đúng !'
+    }).show()
+  }
 }
+
