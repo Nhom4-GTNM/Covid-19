@@ -6,66 +6,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Covid 19</title>
     <link rel="stylesheet" href="./index.css" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script src="./home.js"></script>
   </head>
 
   <body>
-    <div class="">
-      <div class="row box pt-3 mb-5">
-        <div class="ml-5 bg-white btn">
-          <img src="./assets/home.png" width="25px" alt="" />
-        </div>
-        <div class="">
-          <h3 class="text-primary text-center"></h3>
-        </div>
-        <div class="">
-          <a href="./profile/profile.html" class="btn btn-light"
-            >Thông tin cá nhân</a
-          >
-          <a href="#" class="btn btn-light ml-3 text-center">Đăng xuất</a>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="content justify-content-between col-6 offset-3 bg-light">
-          <div class="card">
-            <div class="card-body">
-              <img src="./assets/themmoi.png" alt="" />
+    <div class="container-fluid">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a href="./home.html">
+          <button type="button" class="btn btn-primary">
+            <span class="material-icons"> home </span>
+          </button>
+        </a>
+          <div class="row">
+            <div class="col-4">
+              <button type="button" class="btn btn-primary">
+                <span class="material-icons"> account_circle </span>
+              </button>
             </div>
-            <a href="#" class="text-center">Nhập dữ liệu mới</a>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <img src="./assets/search.jfif" alt="" />
+            <div class="col-4" style="margin-left: 5px">
+              <button type="button" class="btn btn-primary">
+                <span class="material-icons"> logout </span>
+              </button>
             </div>
-            <a href="tracuu.html" class="text-center">Tra cứu</a>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <img src="./assets/QRcode.png" alt="" />
-            </div>
-            <a href="#" class="text-center">Khai báo y tế</a>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <img src="./assets/5k.jfif" alt="" />
-            </div>
-            <a href="#" class="text-center">Quy tắc 5K</a>
           </div>
         </div>
-      </div>
-
-      <div class="row justify-content-center mt-4 mb-4">
-        <p class="bold text-primary">Nhom4 &trade;</p>
+      </nav>
+      <div class="box">
+        <div class="row" style="margin-top: 5%">
+          <div class="col">
+            <a href="#" style="text-decoration: none;">
+            <div
+              class="card"
+              style="
+                background-image: url(https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-add-icon.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+              "
+            >
+              <div class="info">
+                <h1 >Thêm dữ liệu</h1>
+              </div>
+            </div>
+          </a>
+          </div>
+          <div class="col">
+            <a href="./tracuu.html" style="text-decoration: none;">
+            <div
+              class="card"
+              style="
+                background-image: url(https://edu.viettel.vn/upload/18934/20170607/tra-cuc-diem-thi.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+              "
+            >
+            <div class="info">
+              <h1 >Tra cứu thông tin</h1>
+            </div>
+          </div>
+        </a>
+        </div>
+        <!-- 2 -->
+        <div class="row" style="margin-top: 5%">
+          <div class="col">
+            <a href="#" style="text-decoration: none;">
+            <div
+              class="card"
+              style="
+                background-image: url(./assets/QRcode.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+              "
+            >
+            <div class="info">
+              <h1 >Khai báo y tế</h1>
+            </div>
+          </a>
+            </div>
+          </div>
+          <div class="col">
+            <a href="#" style="text-decoration: none;" >
+            <div
+              class="card"
+              style="
+                background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVJntksKr9cKXgW2iDMRwfftB72U_XGwvbSA&usqp=CAU);
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin-left: 10px;
+              "
+            >
+            <div class="info">
+              <h1 >Thông điệp 5k</h1>
+            </div>
+            </div>
+          </a>
+          </div>
+        </div>
       </div>
     </div>
   </body>
