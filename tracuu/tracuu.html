@@ -8,7 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 
-    <script src="./tracuu.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -27,34 +26,19 @@
     ></script>
   </head>
 
-  <body>
+  <body ng-app="myApp">
     <div class="container">
-      <nav class="navbar">
+      <nav class="navbar" ng-controller="back">
         <div class="container">
-          <a href="/main.html#!/#%2F!">
-            <button type="button" class="btn btn-primary">
-              <span class="material-icons"> home </span>
-            </button>
-          </a>
-          <div class="row">
-            <div class="col-4">
-              <a href="/main.html#!/profile">
-                <button type="button" class="btn btn-primary">
-                  <span class="material-icons"> account_circle </span>
-                </button>
-              </a>
-            </div>
-            <div class="col-4" style="margin-left: 5px">
-              <button type="button" class="btn btn-primary">
-                <span class="material-icons"> logout </span>
-              </button>
-            </div>
-          </div>
+          <button type="button" class="btn btn-primary" ng-click="home()">
+            <span class="material-icons"> arrow_back </span>
+          </button>
         </div>
       </nav>
     </div>
+
     <div class="container">
-      <div ng-app="myApp" ng-controller="listCtrl">
+      <div ng-controller="listCtrl">
         <div class="row">
           <table
             style="width: 100%"
@@ -156,5 +140,6 @@
         </div>
       </div>
     </div>
+    <script src="./tracuu.js"></script>
   </body>
 </html>
