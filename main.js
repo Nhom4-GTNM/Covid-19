@@ -15,11 +15,11 @@ function Window() {
       nodeIntegration: true,
       contextIsolation: true,
       devTools: true,
-      preload: path.join(__dirname, "home.js"),
+      preload: path.join(__dirname, "./home/home.js"),
     },
   });
 
-  win.loadFile("home.html");
+  win.loadFile("./main.html");
 }
 //open devtools
 
