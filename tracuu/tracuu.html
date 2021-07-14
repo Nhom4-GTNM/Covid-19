@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Covid 19</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <script src="./tracuu.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="container">
+          <a href="/main.html#!/#%2F!">
+            <button type="button" class="btn btn-primary">
+              <span class="material-icons"> home </span>
+            </button>
+          </a>
+          <div class="row">
+            <div class="col-4">
+              <a href="/main.html#!/profile">
+                <button type="button" class="btn btn-primary">
+                  <span class="material-icons"> account_circle </span>
+                </button>
+              </a>
+            </div>
+            <div class="col-4" style="margin-left: 5px">
+              <button type="button" class="btn btn-primary">
+                <span class="material-icons"> logout </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <div ng-app="myApp" ng-controller="listCtrl">
+        <div class="row">
+          <table
+            style="width: 100%"
+            class="table table-borderless table-light text-center"
+          >
+            <thead class="">
+              <tr class="">
+                <th class="">
+                  Giới tính <br />
+                  <label for="" class=""
+                    ><input
+                      type="radio"
+                      value="Nam"
+                      ng-model="gender"
+                    />Nam</label
+                  >
+                  <label for=""
+                    ><input
+                      type="radio"
+                      value="Nữ"
+                      ng-model="gender"
+                    />Nữ</label
+                  >
+                </th>
+
+                <th class="">
+                  <label for=""> Ngày sinh <br /> </label
+                  ><input
+                    class="form-control col-10 offset-1"
+                    type="text"
+                    ng-model="ngaysinh"
+                  />
+                </th>
+
+                <th>
+                  Tên Vaccine <br />
+                  <select
+                    name="select"
+                    id="select"
+                    ng-model="selectVaccine"
+                    class="form-control"
+                  >
+                    <option value="">Chọn 1</option>
+                    <option value="{{data}}" ng-repeat="data in tenVaccine()">
+                      {{data}}
+                    </option>
+                    <!-- interpolation -->
+                    <!-- <option value="option-2">Option 2</option> -->
+                  </select>
+                </th>
+
+                <th class="">
+                  Tình trạng <br />
+                  <select
+                    name="select"
+                    id="select"
+                    ng-model="selectTt"
+                    class="form-control"
+                  >
+                    <option value="">Chọn 1</option>
+                    <option value="{{data}}" ng-repeat="data in ketqua()">
+                      {{data}}
+                    </option>
+                    <!-- interpolation -->
+                  </select>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="">
+              <tr>
+                <td colspan="4">
+                  <hr />
+                  <h2 class="text-primary">Thông tin</h2>
+                </td>
+              </tr>
+              <tr
+                class="border-bottom"
+                ng-repeat="data in list | filter:{hoten: searchText, tinhtrang: selectTt, ngaysinh: ngaysinh, gioitinh: gender, tenVaccine: selectVaccine } track by $index"
+              >
+                <td colspan="2">
+                  <h5 class="text-info">{{data.hoten }}</h5>
+                  <p>Ngày sinh: {{data.ngaysinh}}, Địa chỉ: {{data.diachi}}</p>
+                </td>
+                <td class="">
+                  <p>Tiêm tại <b>{{data.noitiem }}</b></p>
+                  <p>
+                    Vaccine:
+                    <span class="text-primary">{{data.tenVaccine}}</span>, Số
+                    lần tiêm:
+                    <span class="text-primary">{{data.tiem.length}}</span>
+                  </p>
+                </td>
+                <td class="pt-4">
+                  <u>{{data.tinhtrang}}</u>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
