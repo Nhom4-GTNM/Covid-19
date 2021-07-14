@@ -32,7 +32,7 @@ image {
   transform: translateY(5px);
 }
 .card:hover:before {
-  opacity: 0.8;
+  opacity: 0.3;
 }
 .card:hover .info {
   opacity: 1;
@@ -65,10 +65,10 @@ image {
 .card .info {
   border-radius: 5px;
   padding: 10px;
-  background-color: rgb(143, 219, 219);
+  background-color: aliceblue;
   position: relative;
   z-index: 3;
-  color: rgb(233, 227, 227);
+  color: black;
   opacity: 0;
   transform: translateY(30px);
   transition: 0.5s;
