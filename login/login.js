@@ -1,5 +1,5 @@
 //you can write action in here
-const { ipcRenderer, ipcMain } = require("electron");
+const { ipcRenderer } = require("electron");
 
 window.onload = function () {
   const Login = document.getElementById("btn");
