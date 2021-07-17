@@ -28,17 +28,74 @@
 
   <body ng-app="myApp">
     <div class="container">
-      <nav class="navbar" ng-controller="back">
-        <div class="container">
-          <button type="button" class="btn btn-primary" ng-click="home()">
-            <span class="material-icons"> arrow_back </span>
-          </button>
-        </div>
-      </nav>
-    </div>
+      <div class="container">
+        <nav class="navbar" ng-controller="back">
+          <div class="container">
+            <button type="button" class="btn btn-primary" ng-click="home()">
+              <span class="material-icons"> arrow_back </span>
+            </button>
+          </div>
+        </nav>
+      </div>
+      <div class="container-fluid">
+        <div class="row" style="margin-left: 10%">
+          <form>
+            <div class="col-10">
+              <label for="hoten" class="form-label">Họ và tên</label>
+              <input type="text" class="form-control" id="hoten" />
+            </div>
+            <div class="col-10">
+              <label for="ngaysinh" class="form-label">Ngày sinh</label>
+              <input type="date" class="form-control" id="ngaysinh" />
+            </div>
+            <div class="col-10">
+              <label for="gioitinh" class="form-label">Giới tính</label>
+              <select id="select" class="form-select">
+                <option value="nam">Nam</option>
+                <option value="nu">Nữ</option>
+              </select>
+            </div>
+            <div class="col-10">
+              <label for="diachi" class="form-label">Địa chỉ</label>
+              <input type="text" class="form-control" id="diachi" />
+            </div>
+            <div class="col-10">
+              <label for="ngaytiem" class="form-label">Ngày tiêm</label>
+              <input type="date" class="form-control" id="ngaytiem" />
+            </div>
+            <div class="col-10">
+              <label for="tenvacin" class="form-label">Tên vaccine</label>
+              <select id="tenvacin" class="form-select">
+                <option value="1">Vaccine Việt Nam</option>
+                <option value="2">Vaccine Sputnik V</option>
+                <option value="3">Vaccine Sinopharm</option>
+                <option value="4">Vaccine Spuntnik V.</option>
+              </select>
+            </div>
+            <div class="col-10">
+              <label for="noitiem" class="form-label">Nơi tiêm</label>
+              <input type="text" class="form-control" id="noitiem" />
+            </div>
+            <div class="col-10">
+              <label for="tinhtrang" class="form-label"
+                >Tình trạng sức khỏe:</label
+              >
+              <select id="tinhtrang" class="form-select">
+                <option value="duong">Dương tính</option>
+                <option value="amtinh">Âm tính</option>
+              </select>
+            </div>
 
-    <div class="container">
-      <h1>Page thêm dữ liệu</h1>
+            <button
+              type="submit"
+              class="btn btn-danger col-10"
+              style="margin-top: 20px"
+            >
+              Thêm dữ liệu
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
     <script src="./add.js"></script>
   </body>
