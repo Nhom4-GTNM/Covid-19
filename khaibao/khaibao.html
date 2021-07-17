@@ -27,18 +27,27 @@
   </head>
 
   <body ng-app="myApp">
-    <div class="container">
-      <nav class="navbar" ng-controller="back">
-        <div class="container">
-          <button type="button" class="btn btn-primary" ng-click="home()">
-            <span class="material-icons"> arrow_back </span>
-          </button>
-        </div>
-      </nav>
-    </div>
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <nav class="navbar" ng-controller="back">
+          <div class="container">
+            <button type="button" class="btn btn-primary" ng-click="home()">
+              <span class="material-icons"> arrow_back </span>
+            </button>
+          </div>
+        </nav>
+      </div>
 
-    <div class="container">
-      <h1>Page Khai báo</h1>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col" style="width: 100%; height: 700px">
+            <iframe
+              src="https://tokhaiyte.vn/"
+              style="width: 100%; height: 100%"
+            ></iframe>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./khaibao.js"></script>
   </body>
