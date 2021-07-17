@@ -1,13 +1,15 @@
 {
-  "name": "appcovid19",
+  "name": "VaccineNote",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build:windows": "electron-builder --win --dir",
+    "dist:windows": "electron-builder --win"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nhom4",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.8.2",
@@ -17,6 +19,16 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "electron": "^13.1.6"
+    "electron": "^13.1.6",
+    "electron-builder": "^22.11.7"
+  },
+  "build": {
+    "icon": "./assets/VaccineNote.jpg",
+    "productName": "VaccineNote",
+    "nsis": {
+      "artifactName": "VaccineNote.setup.${version}.${ext}",
+      "uninstallDisplayName": "VaccineNote"
+    },
+    "copyright": "Coppyright 2021 ${author}"
   }
 }
