@@ -1,158 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="myApp">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App Covid 19</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-
+    <meta charset="utf-8" />
+   
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+  
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <!-- JavaScript Bundle with Popper -->
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
+      data-require="angular.js@1.0.x"
+      src="http://code.angularjs.org/1.0.7/angular.min.js"
+      data-semver="1.0.7"
     ></script>
   </head>
 
-  <body ng-app="myApp">
-    <div class="container">
-      <nav class="navbar" ng-controller="back">
-        <div class="container">
-          <button type="button" class="btn btn-primary" ng-click="home()">
-            <span class="material-icons"> arrow_back </span>
-          </button>
-        </div>
-      </nav>
-    </div>
-
-    <div class="container">
-      <div ng-controller="listCtrl">
-        <div class="row">
-          <table
-            style="width: 100%"
-            class="table table-borderless table-light text-center"
-          >
-            <thead class="">
-              <tr class="">
-                <th class="">
-                  Giới tính <br />
-                  <label for="" class=""
-                    ><input
-                      type="radio"
-                      value="Nam"
-                      ng-model="gender"
-                    />Nam</label
+  <body ng-app="jsonCtrl">
+    <div ng-controller="jsonCtrl">
+      <div class="container">
+        <nav class="navbar">
+          <div class="container">
+            <button type="button" class="btn btn-primary" ng-click="home()">
+              <span class="material-icons"> arrow_back </span>
+            </button>
+          </div>
+        </nav>
+      </div>
+      <div class="container">
+        <table
+          style="width: 100%"
+          class="table table-borderless table-light text-center"
+        >
+          <thead class="">
+            <tr class="">
+              <th class="">
+                <div class="row">
+                  <h6>Giới tính </h6>
+                  <div class="col-6" style="text-align: center;">
+                    <input
+                    type="radio"
+                    value="Nam"
+                    ng-model="gender"
+                  />Nam</label
+                >
+                  </div>
+                  <div class="col-6"style="text-align: center;">
+                    <label for=""
+                    ><input type="radio" value="Nữ" ng-model="gender" />Nữ</label
                   >
-                  <label for=""
-                    ><input
-                      type="radio"
-                      value="Nữ"
-                      ng-model="gender"
-                    />Nữ</label
-                  >
-                </th>
+                  </div>
+                </div>
+                
+                
+               
+              </th>
 
-                <th class="">
-                  <label for=""> Ngày sinh <br /> </label
-                  ><input
-                    class="form-control col-10 offset-1"
-                    type="text"
-                    ng-model="ngaysinh"
-                  />
-                </th>
+              <th class="">
+                <label for=""> Ngày sinh <br /> </label
+                ><input
+                  class="form-control col-5 "
+                  type="text"
+                  ng-model="ngaysinh"
+                />
+              </th>
 
-                <th>
-                  Tên Vaccine <br />
-                  <select
-                    name="select"
-                    id="select"
-                    ng-model="selectVaccine"
-                    class="form-control"
-                  >
-                    <option value="">Chọn 1</option>
-                    <option value="{{data}}" ng-repeat="data in tenVaccine()">
-                      {{data}}
-                    </option>
-                    <!-- interpolation -->
-                    <!-- <option value="option-2">Option 2</option> -->
-                  </select>
-                </th>
+              <th>
+                Tên Vaccine <br />
+                <select
+                  name="select"
+                  id="select"
+                  ng-model="selectVaccine"
+                  class="form-control"
+                >
+                  <option value="">Chọn 1</option>
+                  <option value="{{data}}" ng-repeat="data in tenVaccine()">
+                    {{data}}
+                  </option>
+                  <!-- interpolation -->
+                  <!-- <option value="option-2">Option 2</option> -->
+                </select>
+              </th>
 
-                <th class="">
-                  Tình trạng <br />
-                  <select
-                    name="select"
-                    id="select"
-                    ng-model="selectTt"
-                    class="form-control"
-                  >
-                    <option value="">Chọn 1</option>
-                    <option value="{{data}}" ng-repeat="data in ketqua()">
-                      {{data}}
-                    </option>
-                    <!-- interpolation -->
-                  </select>
-                </th>
-              </tr>
-            </thead>
-            <tbody class="">
-              <tr>
-                <td colspan="4">
-                  <label for=""> <b>Tìm kiếm</b> </label
-                  ><input
-                    class="form-control"
-                    type="text"
-                    ng-model="searchText"
-                    placeholder="Nhập tên cần tìm..."
-                    width="600px"
-                  />
-                </td>
-              </tr>
-              <hr />
-              <tr>
-                <td colspan="4">
-                  <hr />
-                  <h2 class="text-primary">Thông tin</h2>
-                </td>
-              </tr>
-              <tr
-                class="border-bottom"
-                ng-repeat="data in list | filter:{hoten: searchText, tinhtrang: selectTt, ngaysinh: ngaysinh, gioitinh: gender, tenVaccine: selectVaccine } track by $index"
-              >
-                <td colspan="2">
-                  <h5 class="text-info">{{data.hoten }}</h5>
-                  <p>Ngày sinh: {{data.ngaysinh}}, Địa chỉ: {{data.diachi}}</p>
-                </td>
-                <td class="">
-                  <p>Tiêm tại <b>{{data.noitiem }}</b></p>
-                  <p>
-                    Vaccine:
-                    <span class="text-primary">{{data.tenVaccine}}</span>, Số
-                    lần tiêm:
-                    <span class="text-primary">{{data.tiem.length}}</span>
-                  </p>
-                </td>
-                <td class="pt-4">
-                  <u>{{data.tinhtrang}}</u>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              <th class="">
+                Tình trạng <br />
+                <select
+                  name="select"
+                  id="select"
+                  ng-model="selectTt"
+                  class="form-control"
+                >
+                  <option value="">Chọn 1</option>
+                  <option value="{{data}}" ng-repeat="data in ketqua()">
+                    {{data}}
+                  </option>
+                  <!-- interpolation -->
+                </select>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr>
+              <td colspan="4">
+                <label for=""> <b>Tìm kiếm</b> </label
+                ><input
+                  class="form-control"
+                  type="text"
+                  ng-model="searchText"
+                  placeholder="Nhập tên cần tìm..."
+                  width="600px"
+                />
+              </td>
+            </tr>
+            <hr />
+            <tr>
+              <td colspan="4">
+                <hr />
+                <h2 class="text-primary">Thông tin</h2>
+              </td>
+            </tr>
+            <tr class="border-bottom" ng-repeat="data in data |filter:{hoten:searchText, tinhtrang: selectTt, ngaysinh: ngaysinh, gioitinh: gender, tenVaccine: selectVaccine} ">
+              <td colspan="2">
+                <h5 class="text-info">{{data.hoten }}</h5>
+                <p>Giới tính: {{data.gioitinh}} ,Ngày sinh: {{data.ngaysinh}}, Địa chỉ: {{data.diachi}}</p>
+              </td>
+              <td class="">
+                <p>Tiêm tại <b>{{data.noitiem }}</b></p>
+                <p>
+                  Vaccine:
+                  <span class="text-primary">{{data.tenVaccine}}</span>, Số lần
+                  tiêm:
+                  <span class="text-primary">{{data.tiem.length}}</span>
+                </p>
+              </td>
+              <td class="pt-4">
+                <u>{{data.tinhtrang}}</u>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <script src="./tracuu.js"></script>
   </body>
+  <script>
+    var myApp = angular.module("myApp", []);
+
+    myApp.controller("jsonCtrl", function ($scope, $http) {
+      $scope.searchText =""
+      $scope.selectTt =""
+      $scope.ngaysinh =""
+      $scope.gender =""
+      $scope.selectVaccine =""
+      $http.get("demo.json").success(function (data) {
+        $scope.data = data;
+      });
+      $scope.tenVaccine = () => {
+        tenVaccine = ["Vaccine Việt Nam"];
+        $scope.data.forEach((data) => {
+          if (tenVaccine.includes(data.tenVaccine) == false) {
+            tenVaccine.push(data.tenVaccine);
+          }
+        });
+        return tenVaccine;
+      };
+      $scope.ketqua = () => {
+        ketqua = ["Âm tính"];
+        $scope.data.forEach((data) => {
+          if (ketqua.includes(data.tinhtrang) == false) {
+            ketqua.push(data.tinhtrang);
+          }
+        });
+        return ketqua;
+      };
+      $scope.home = function(){
+        window.history.back()
+      }
+    });
+  </script>
 </html>
