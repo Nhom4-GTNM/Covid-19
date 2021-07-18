@@ -27,7 +27,7 @@
   </head>
 
   <body ng-app="myApp">
-    <div class="container">
+    <div class="container" ng-controller="push">
       <div class="container">
         <nav class="navbar" ng-controller="back">
           <div class="container">
@@ -39,57 +39,99 @@
       </div>
       <div class="container-fluid">
         <div class="row" style="margin-left: 10%">
+          <h4 style="color: brown;text-align: center;">{{msg}}</h4>
           <form>
             <div class="col-10">
-              <label for="hoten" class="form-label">Họ và tên</label>
-              <input type="text" class="form-control" id="hoten" />
+              <label for="hoten" class="form-label"
+                >Họ và tên: </span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="hoten"
+                ng-model="hoten"
+              />
             </div>
             <div class="col-10">
-              <label for="ngaysinh" class="form-label">Ngày sinh</label>
-              <input type="date" class="form-control" id="ngaysinh" />
+              <label for="ngaysinh" class="form-label"
+                >Ngày sinh:</span></label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="ngaysinh"
+                ng-model="ngaysinh"
+              />
             </div>
             <div class="col-10">
-              <label for="gioitinh" class="form-label">Giới tính</label>
-              <select id="select" class="form-select">
-                <option value="nam">Nam</option>
-                <option value="nu">Nữ</option>
+              <label for="gioitinh" class="form-label"
+                >Giới tính:</span></label
+              >
+              <select id="select" ng-model="sex" class="form-select">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
               </select>
             </div>
             <div class="col-10">
-              <label for="diachi" class="form-label">Địa chỉ</label>
-              <input type="text" class="form-control" id="diachi" />
+              <label for="diachi" class="form-label"
+                >Địa chỉ: </span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="diachi"
+                ng-model="diachi"
+              />
             </div>
             <div class="col-10">
-              <label for="ngaytiem" class="form-label">Ngày tiêm</label>
-              <input type="date" class="form-control" id="ngaytiem" />
+              <label for="ngaytiem" class="form-label"
+                >Ngày tiêm: </label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="ngaytiem"
+                ng-model="ngaytiem"
+              />
             </div>
             <div class="col-10">
-              <label for="tenvacin" class="form-label">Tên vaccine</label>
-              <select id="tenvacin" class="form-select">
-                <option value="1">Vaccine Việt Nam</option>
-                <option value="2">Vaccine Sputnik V</option>
-                <option value="3">Vaccine Sinopharm</option>
-                <option value="4">Vaccine Spuntnik V.</option>
+              <label for="tenvacin" class="form-label"
+                >Tên vaccine:</label
+              >
+              <select id="tenvacin" class="form-select" ng-model="tenvacin">
+                <option value="Vaccine Việt Nam">Vaccine Việt Nam</option>
+                <option value="Vaccine Sputnik V">Vaccine Sputnik V</option>
+                <option value="Vaccine Sinopharm">Vaccine Sinopharm</option>
+                <option value="Vaccine Spuntnik V.">Vaccine Spuntnik V.</option>
               </select>
             </div>
             <div class="col-10">
-              <label for="noitiem" class="form-label">Nơi tiêm</label>
-              <input type="text" class="form-control" id="noitiem" />
+              <label for="noitiem" class="form-label"
+                >Nơi tiêm:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="noitiem"
+                ng-model="noitiem"
+              />
             </div>
             <div class="col-10">
               <label for="tinhtrang" class="form-label"
-                >Tình trạng sức khỏe:</label
+                >Tình trạng sức khỏe:
+                </label
               >
-              <select id="tinhtrang" class="form-select">
-                <option value="duong">Dương tính</option>
-                <option value="amtinh">Âm tính</option>
+              <select id="tinhtrang" class="form-select" ng-model="tinhtrang">
+                <option value="Âm tính">Âm tính</option>
+                <option value="Dương tính">Dương tính</option>
               </select>
             </div>
 
             <button
               type="submit"
               class="btn btn-danger col-10"
-              style="margin-top: 20px"
+              style="margin-top: 20px; margin-bottom: 20px"
+              ng-click="add()"
             >
               Thêm dữ liệu
             </button>
