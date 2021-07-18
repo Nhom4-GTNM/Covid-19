@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 let users = require("./db");
+let patient = require("./db_patient");
 
 let win;
 let login;
@@ -67,7 +68,6 @@ function validateLogin(obj) {
       Window();
       win.show();
       login.close();
-      console.log(user);
       //troller
 
       break;
@@ -81,11 +81,23 @@ function validateLogin(obj) {
 }
 // send data user
 ipcMain.on("hello", (event, obj) => {
-  console.log(obj);
+  // console.log(JSON.stringify(obj));
 
   event.reply("fontend", user);
 });
 ipcMain.on("out", (event, msg) => {
   console.log("Logout", msg);
   app.exit();
+});
+//tra cuu
+// for (i of patient) {
+//   console.log(i);
+// }
+ipcMain.on("search", (event, mes) => {
+  console.log("page search: ", mes);
+  event.reply("patient", JSON.stringify(patient));
+});
+ipcMain.on("add", (event, mes) => {
+  console.log("add search: ", mes);
+  event.reply("data", JSON.stringify(patient));
 });
