@@ -21,6 +21,8 @@ const { ipcRenderer } = require("electron");
 window.onload = function () {
   const btn = document.getElementById("user");
   const out = document.getElementById("out");
+  const search = document.getElementById("search");
+  const add = document.getElementById("add");
 
   btn.onclick = function () {
     ipcRenderer.send("hello", "Profile page");
@@ -36,5 +38,17 @@ window.onload = function () {
     } else {
       console.warn("COntinue using app");
     }
+  };
+  search.onclick = function () {
+    ipcRenderer.send("search", "search page");
+    ipcRenderer.on("patient", (event, data) => {
+      window.localStorage.setItem("patient", data);
+    });
+  };
+  add.onclick = function () {
+    ipcRenderer.send("add", "add page");
+    ipcRenderer.on("data", (event, data) => {
+      window.localStorage.setItem("add", data);
+    });
   };
 };
