@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col-2">
             <img
-              style="border-radius: 50%; width: 100px"
+              style="border-radius: 50%; width: 150px"
               src="{{inf.avatar}}"
               alt=""
             />
@@ -35,26 +35,26 @@
         </div>
       </div>
       <div class="row">
-        <table
-          class="table user-view-table m-0"
-          style="background-color: rgb(245, 243, 243); border-radius: 5px"
-        >
+        <table class="table" style="background-color: azure">
           <tbody>
             <tr>
-              <td id="title">Chức vụ:</td>
-              <td>{{inf.level}}</td>
+              <td>
+                <span style="font-weight: bold">Chức vụ: </span> {{inf.level}}
+              </td>
             </tr>
             <tr>
-              <td id="title">Tuổi:</td>
-              <td>{{inf.age}}</td>
+              <td><span style="font-weight: bold">Tuổi: </span> {{inf.age}}</td>
             </tr>
             <tr>
-              <td id="title">Giới tính:</td>
-              <td>{{inf.sex}}</td>
+              <td>
+                <span style="font-weight: bold">Giới tính: </span> {{inf.sex}}
+              </td>
             </tr>
             <tr>
-              <td id="title">Hoạt động:</td>
-              <td>{{inf.active}}</td>
+              <td>
+                <span style="font-weight: bold">Tình trạng hoạt động: </span>
+                {{inf.active}}
+              </td>
             </tr>
           </tbody>
         </table>
