@@ -108,7 +108,7 @@
     <script>
       app = angular.module("MyApp", ["ngMaterial"]);
       app.controller("random", function ($scope) {
-        $scope.new = Math.floor(Math.random() * 10000);
+        $scope.new = Math.floor(Math.random() * 100000);
         $scope.number = function () {
           $scope.new = Math.floor(Math.random() * 10000);
         };
