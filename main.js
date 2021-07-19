@@ -5,6 +5,7 @@ let patient = require("./db_patient");
 
 let win;
 let login;
+let admin;
 function Window() {
   win = new BrowserWindow({
     height: 715,
@@ -21,6 +22,23 @@ function Window() {
   });
 
   win.loadFile("./main.html");
+}
+function Admin() {
+  admin = new BrowserWindow({
+    height: 715,
+    width: 1200,
+    minWidth: 600,
+    minHeight: 200,
+    center: true,
+    webPreferences: {
+      nodeIntegration: true, // is default value after Electron v5
+      contextIsolation: false, // protect against prototype pollution
+      enableRemoteModule: false, // turn off remote
+      devTools: true,
+    },
+  });
+
+  admin.loadFile("./admin/index.html");
 }
 //open devtools
 
@@ -60,23 +78,31 @@ ipcMain.on("account", (event, obj) => {
 });
 
 function validateLogin(obj) {
-  stt = false;
-  for (user of users) {
-    if (obj.phone == user.phone && obj.pwd == user.pwd) {
-      user.active = true;
-      stt = true;
-      Window();
-      win.show();
-      login.close();
-      //troller
+  if (obj.phone == "admin" && obj.pwd == 000) {
+    Admin();
+    Window();
+    admin.show();
+    login.close();
+    win.close();
+  } else {
+    stt = false;
+    for (user of users) {
+      if (obj.phone == user.phone && obj.pwd == user.pwd) {
+        user.active = true;
+        stt = true;
+        Window();
+        win.show();
+        login.close();
+        //troller
 
-      break;
-    } else {
-      stt = false;
+        break;
+      } else {
+        stt = false;
+      }
     }
-  }
-  if (stt == false) {
-    console.log("login false");
+    if (stt == false) {
+      console.log("login false");
+    }
   }
 }
 // send data user
